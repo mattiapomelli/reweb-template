@@ -69,10 +69,59 @@ const config = {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
+        "border-beam": {
+          "100%": {
+            "offset-distance": "100%",
+          },
+        },
+        "image-glow": {
+          "0%": {
+            opacity: "0",
+            "animation-timing-function": "cubic-bezier(0.74, 0.25, 0.76, 1)",
+          },
+          "10%": {
+            opacity: "0.7",
+            "animation-timing-function": "cubic-bezier(0.12, 0.01, 0.08, 0.99)",
+          },
+          "100%": {
+            opacity: "0.4",
+          },
+        },
+        "fade-in": {
+          from: { opacity: "0", transform: "translateY(-10px)" },
+          to: { opacity: "1", transform: "none" },
+        },
+        "fade-up": {
+          from: { opacity: "0", transform: "translateY(20px)" },
+          to: { opacity: "1", transform: "none" },
+        },
+        shimmer: {
+          "0%, 90%, 100%": {
+            "background-position": "calc(-100% - var(--shimmer-width)) 0",
+          },
+          "30%, 60%": {
+            "background-position": "calc(100% + var(--shimmer-width)) 0",
+          },
+        },
+        marquee: {
+          from: { transform: "translateX(0)" },
+          to: { transform: "translateX(calc(-100% - var(--gap)))" },
+        },
+        "marquee-vertical": {
+          from: { transform: "translateY(0)" },
+          to: { transform: "translateY(calc(-100% - var(--gap)))" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        "border-beam": "border-beam calc(var(--duration)*1s) infinite linear",
+        "image-glow": "image-glow 4100ms 600ms ease-out forwards",
+        "fade-in": "fade-in 1000ms var(--animation-delay, 0ms) ease forwards",
+        "fade-up": "fade-up 1000ms var(--animation-delay, 0ms) ease forwards",
+        shimmer: "shimmer 8s infinite",
+        marquee: "marquee var(--duration) infinite linear",
+        "marquee-vertical": "marquee-vertical var(--duration) linear infinite",
       },
       fontFamily: {
         sans: ["var(--font-sans)", ...fontFamily.sans],
