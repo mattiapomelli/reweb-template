@@ -5,10 +5,13 @@ import { useEffect, useId, useRef } from "react";
 
 import { cn } from "@/lib/utils";
 
-export const FadeInCard: React.FC<{ children: React.ReactNode; className?: string }> = ({
+export function FadeInCard({
   children,
   className,
-}) => {
+}: {
+  children: React.ReactNode;
+  className?: string;
+}) {
   const id = useId();
   const controls = useAnimation();
   const ref = useRef(null);
@@ -34,4 +37,4 @@ export const FadeInCard: React.FC<{ children: React.ReactNode; className?: strin
       {children}
     </motion.div>
   );
-};
+}

@@ -8,7 +8,7 @@ interface TextShimmerProps {
   shimmerWidth?: number;
 }
 
-const TextShimmer: FC<TextShimmerProps> = ({ children, className, shimmerWidth = 100 }) => {
+export function TextShimmer({ children, className, shimmerWidth = 100 }: TextShimmerProps) {
   return (
     <p
       style={
@@ -32,6 +32,4 @@ const TextShimmer: FC<TextShimmerProps> = ({ children, className, shimmerWidth =
       {children}
     </p>
   );
-};
-
-export { TextShimmer };
+}
