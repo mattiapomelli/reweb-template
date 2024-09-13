@@ -13,8 +13,8 @@ export const AnimatedMobileNavbar = forwardRef<
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
-    const html = document.querySelector("html");
-    if (html) html.classList.toggle("overflow-hidden", isOpen);
+    const overflow = isOpen ? "hidden" : "auto";
+    document.documentElement.style.overflow = overflow;
   }, [isOpen]);
 
   useEffect(() => {

@@ -1,36 +1,39 @@
 "use client";
 
 import { Menu, X } from "lucide-react";
-import { ReactNode, useState } from "react";
-
-import { useLockBody } from "@/lib/hooks/utils/use-lock-body";
-
-function MobileMenu({ onClose, children }: { onClose: () => void; children: ReactNode }) {
-  useLockBody();
-
-  return (
-    <div
-      className="fixed inset-0 top-[50px] z-50 size-full overflow-auto bg-black/40 animate-in slide-in-from-bottom-24 md:hidden"
-      onClick={onClose}
-    >
-      {children}
-    </div>
-  );
-}
+import { ReactNode, useEffect, useLayoutEffect, useState } from "react";
 
 export function MobileNavbar({ children }: { children: ReactNode }) {
-  const [showMobileMenu, setShowMobileMenu] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+
+  useEffect(() => {
+    const overflow = isOpen ? "hidden" : "auto";
+    document.documentElement.style.overflow = overflow;
+  }, [isOpen]);
+
+  useEffect(() => {
+    const closeHamburgerNavigation = () => setIsOpen(false);
+    window.addEventListener("orientationchange", closeHamburgerNavigation);
+    window.addEventListener("resize", closeHamburgerNavigation);
+
+    return () => {
+      window.removeEventListener("orientationchange", closeHamburgerNavigation);
+      window.removeEventListener("resize", closeHamburgerNavigation);
+    };
+  }, [setIsOpen]);
 
   return (
     <>
-      <button
-        className="flex items-center space-x-2 md:hidden"
-        onClick={() => setShowMobileMenu(!showMobileMenu)}
-      >
-        {showMobileMenu ? <X /> : <Menu />}
+      <button className="md:hidden" onClick={() => setIsOpen(!isOpen)}>
+        {isOpen ? <X /> : <Menu />}
       </button>
-      {showMobileMenu && (
-        <MobileMenu onClose={() => setShowMobileMenu(false)}>{children}</MobileMenu>
+      {isOpen && (
+        <div
+          className="fixed inset-0 top-[50px] z-40 size-full overflow-auto bg-black/40 animate-in slide-in-from-bottom-24 md:hidden"
+          onClick={() => setIsOpen(false)}
+        >
+          {children}
+        </div>
       )}
     </>
   );
