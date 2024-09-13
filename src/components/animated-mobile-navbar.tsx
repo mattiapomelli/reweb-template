@@ -26,7 +26,7 @@ export const AnimatedMobileNavbar = forwardRef<
       window.removeEventListener("orientationchange", closeHamburgerNavigation);
       window.removeEventListener("resize", closeHamburgerNavigation);
     };
-  }, [setIsOpen]);
+  }, []);
 
   return (
     <>

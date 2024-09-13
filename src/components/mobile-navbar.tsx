@@ -20,7 +20,7 @@ export function MobileNavbar({ children }: { children: ReactNode }) {
       window.removeEventListener("orientationchange", closeHamburgerNavigation);
       window.removeEventListener("resize", closeHamburgerNavigation);
     };
-  }, [setIsOpen]);
+  }, []);
 
   return (
     <>
