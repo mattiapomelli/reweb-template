@@ -25,7 +25,7 @@ export default function RootLayout({
     <html lang="en">
       <body
         className={cn(
-          "min-h-screen font-sans antialiased",
+          "min-h-screen overflow-x-hidden font-sans antialiased",
           fontSans.variable,
           fontHeading.variable,
         )}
