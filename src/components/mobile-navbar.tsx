@@ -1,7 +1,7 @@
 "use client";
 
 import { Menu, X } from "lucide-react";
-import { ReactNode, useEffect, useLayoutEffect, useState } from "react";
+import { ReactNode, useEffect, useState } from "react";
 
 export function MobileNavbar({ children }: { children: ReactNode }) {
   const [isOpen, setIsOpen] = useState(false);
